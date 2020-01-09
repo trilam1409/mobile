@@ -1,0 +1,11 @@
+{
+  "status" : {
+    "code": 200,
+    "message": "Login successfully"
+  },
+  "data": {
+    "fullname": "Tri Quach",
+    "email": "qmtri091991@gmail.com",
+    "user_token": "AGAJGSGSGSOPJ98751216126161"
+  }
+}
