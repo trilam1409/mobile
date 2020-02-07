@@ -24,7 +24,7 @@ export default class CourseDetail extends Component {
     _getVideo() {
         const { videoList, videoToPlay } = this.props;
 
-        if(videoList.length <= 0) {
+        if(!videoList || videoList.length <= 0) {
             return null;
         }
 
@@ -85,10 +85,8 @@ export default class CourseDetail extends Component {
 
                 {this._videoTitleRender()}
 
-                <ScrollView style={{height: 300}}>
                     <FlatList
-                        vertical
-                        keyExtractor={(item, index) => index}
+                        keyExtractor={(item, index) => index.toString()}
                         data={videoList}
                         showsHorizontalScrollIndicator={false}
                         showsVerticalScrollIndicator={false}
@@ -101,7 +99,6 @@ export default class CourseDetail extends Component {
                             </TouchableWithoutFeedback>
                         )}
                     />
-                </ScrollView>
             </View>;
     }
 }

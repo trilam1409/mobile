@@ -42,7 +42,9 @@ class Menu extends Component {
 // and insert/links it into the props of our component.
 // This function makes Redux know that this component needs to be passed a piece of the state
 function mapStateToProps(state, props) {
-    return {};
+    return {
+
+    };
 }
 
 // Doing this merges our actions into the component’s props,

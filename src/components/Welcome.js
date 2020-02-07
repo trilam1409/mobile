@@ -15,7 +15,7 @@ class Welcome extends Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._getCategoryCoursesList();
   }
 

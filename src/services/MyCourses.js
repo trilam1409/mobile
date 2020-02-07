@@ -12,6 +12,8 @@ exports.getMyCoursesList = function() {
                 }
 
                 resolve(responseData.data);
-            });
+            }).catch((error) => {
+            reject(error);
+        });
     });
 };

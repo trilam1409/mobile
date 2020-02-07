@@ -29,7 +29,7 @@ const appNav = createBottomTabNavigator({
         screen: MyCourses,
         navigationOptions: {
             tabBarLabel:"MyCourses",
-            tabBarIcon: ({ tintColor }) => <Icon name={"book"} size={30} color={tintColor} />,
+            tabBarIcon: ({ tintColor }) => <Icon type={'material-community'} name={"library-video"} size={25} color={tintColor} />,
             swipeEnabled: false
         }
     },
@@ -37,7 +37,7 @@ const appNav = createBottomTabNavigator({
         screen: Menu,
         navigationOptions: {
             tabBarLabel:"Menu",
-            tabBarIcon: ({ tintColor }) => <Icon name={"accessibility"} size={30} color={tintColor} />,
+            tabBarIcon: ({ tintColor }) => <Icon type={'ionicon'} name={'md-settings'} size={25} color={tintColor} />,
             swipeEnabled: false
         }
     }
@@ -49,13 +49,14 @@ const appNav = createBottomTabNavigator({
             backgroundColor: ACTIVE_TAB_COLOR,
             height: 43
         },
-        activeTintColor: 'black',
+        activeTintColor: '#0283df',
         inactiveTintColor: 'grey',
         pressColor: '#E4E4E4',
         style: {
             backgroundColor: 'white',
-            height: 43,
-            borderTopColor: ACTIVE_TAB_COLOR
+            paddingTop: 10,
+            height: 53,
+            borderTopColor: 'transparent'
         }
     }
 });

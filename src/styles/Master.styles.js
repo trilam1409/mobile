@@ -27,11 +27,9 @@ export const Styles = StyleSheet.create({
         width: SCREEN_WIDTH
     },
     header: {
-        backgroundColor: HEADER_COLOR,
         width: SCREEN_WIDTH,
-        height: SCREEN_HEIGHT * 9 / 100,
+        height: SCREEN_HEIGHT * 10 / 100,
         paddingTop: SCREEN_HEIGHT * 3 / 100,
-        borderBottomWidth: 1,
         alignItems: 'center',
         alignSelf: 'center',
         top: 0
@@ -39,11 +37,12 @@ export const Styles = StyleSheet.create({
     headerTitleStyle: {
         color:'white',
         fontWeight:'bold',
-        fontSize:20
+        fontSize:20,
+        paddingTop: 10
     },
     topContainer: {
         flex:1,
-        backgroundColor: HEADER_COLOR
+        // backgroundColor: HEADER_COLOR
     },
     bottomContainer: {
         flex:1.5,

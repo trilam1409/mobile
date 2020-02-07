@@ -15,9 +15,8 @@ class MyCourses extends Component {
         super(props);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.showLoading(true);
-
         this.props.getMyCoursesList().then(result => {
             this.props.showLoading(false);
         }).catch(error => {
@@ -26,6 +25,7 @@ class MyCourses extends Component {
     }
 
     onCardPress(item) {
+        console.log(item)
         this.props.navigation.navigate('CourseDetail', item);
     }
 

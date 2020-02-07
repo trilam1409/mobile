@@ -1,7 +1,7 @@
 import { GET_MY_COURSES_LIST } from '../utils/Constants';
 import * as MyCoursesService from '../services/MyCourses';
 
-export const getMyCoursesList = (userId = null) => {
+export const getMyCoursesList = () => {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
             MyCoursesService.getMyCoursesList().then((data) => {

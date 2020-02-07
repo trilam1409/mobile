@@ -24,9 +24,10 @@ class Login extends Component {
         this.props
             .loginAccount(values)
             .then((result) => {
-                CacheService.storeToCache({ key: CredentialsUtil.ACCESS_TOKEN_CACHE_KEY, data: result.access_token }).then(() => {
+                CacheService.storeToCache({ key: CredentialsUtil.ACCESS_TOKEN_CACHE_KEY, data: result.access_token }, {key: CredentialsUtil.USER_NAME, data: result.username}).then(() => {
                 this.props.showLoading(false);
                 this.props.navigation.navigate('App');
+                
             });
         }).catch((error) => {
             this.props.showLoading(false);

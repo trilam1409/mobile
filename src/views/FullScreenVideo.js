@@ -12,10 +12,6 @@ export default class FullScreenVideo extends Component {
         super(props);
     }
 
-    componentWillMount () {
-        Orientation.lockToLandscapeLeft();
-    }
-
     componentDidMount() {
         Orientation.lockToLandscapeLeft();
     }

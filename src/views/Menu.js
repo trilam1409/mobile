@@ -9,6 +9,9 @@ import { Avatar } from 'react-native-elements'
 import { MenuStyle as styles } from '../styles/Menu.styles';
 import { Term } from '../views/static_content/Term';
 import SettingsList from 'react-native-settings-list';
+import AutoHeightImage from 'react-native-auto-height-image';
+import {getFromCache} from '../services/Cache';
+import * as CredentialsUtil from '../utils/Credentials';
 
 export default function MenuView(props) {
     const { onLogoutPress, onMenuItemPress } = props;
@@ -22,7 +25,7 @@ export default function MenuView(props) {
                     rounded
                     source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"}}
                 />
-                <Text h3 style={{fontWeight: 'bold', fontSize: 17}}>Ngọc Nguyễn</Text>
+                <Text h3 style={{fontWeight: 'bold', fontSize: 17}}></Text>
                 <Text>Học viên</Text>
             </View>
             <View style={{backgroundColor:'transparent',flex:2, marginTop: 20}}>
@@ -70,7 +73,7 @@ export default function MenuView(props) {
             <View style={{alignItems: 'center', alignSelf: 'center', marginBottom: 20}}>
                 <Text>1.0.0</Text>
                 <View>
-                    <Image style={{height:20, width:76}} source={require('../../assets/images/eduworks_final_logo.png')}/>
+                    <AutoHeightImage width={130} source={require('../../assets/images/vnwl_logo.png')}/>
                 </View>
             </View>
         </View>

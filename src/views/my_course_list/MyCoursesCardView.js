@@ -15,7 +15,8 @@ export default function MyCoursesCardView(props){
                         left:0,
                         right:0,
                         top:0,
-                        bottom:0
+                        bottom:0,
+                        borderRadius: 4
                     }}
                     source={{uri: item.image_url}}
                 />

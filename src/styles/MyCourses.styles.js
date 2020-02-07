@@ -3,7 +3,8 @@ import { SCREEN_HEIGHT } from './Master.styles';
 
 export const Style = StyleSheet.create({
     cardContainer: {
-        padding: 0,
-        maxHeight: SCREEN_HEIGHT * 15 / 100
+        padding: 8,
+        maxHeight: SCREEN_HEIGHT * 15 / 100,
+        borderRadius: 4,
     }
 });
