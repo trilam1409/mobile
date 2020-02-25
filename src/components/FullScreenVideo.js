@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import FullscreenVideo from '../views/FullScreenVideo';
 
 class FullScreenVideo extends Component {
-    static navigationOptions = {
-        header: null
-    };
 
     constructor(props) {
         super(props);

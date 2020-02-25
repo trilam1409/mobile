@@ -11,9 +11,6 @@ import * as CacheService from '../services/Cache';
 import * as CredentialsUtil from '../utils/Credentials';
 
 class Login extends Component {
-    static navigationOptions = ({ navigation }) => ({
-        header: false
-    });
 
     constructor(props) {
         super(props);
@@ -27,7 +24,7 @@ class Login extends Component {
                 CacheService.storeToCache({ key: CredentialsUtil.ACCESS_TOKEN_CACHE_KEY, data: result.access_token }, {key: CredentialsUtil.USER_NAME, data: result.username}).then(() => {
                 this.props.showLoading(false);
                 this.props.navigation.navigate('App');
-                
+
             });
         }).catch((error) => {
             this.props.showLoading(false);
@@ -39,8 +36,7 @@ class Login extends Component {
         if (this.props.loading) {
             return <LoadingComponent />;
         } else {
-            return <MasterView navigate={this.props.navigation.navigate}
-                               content={<LoginFormView onSubmit={(values) => this.submit(values)}/>}/>;
+            return <MasterView content={<LoginFormView onSubmit={(values) => this.submit(values)}/>}/>;
         }
     }
 }

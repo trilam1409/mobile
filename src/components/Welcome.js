@@ -3,13 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MasterView from '../views/Master';
 import WelcomeView from '../views/Welcome';
-import { createStackNavigator } from 'react-navigation';
 import * as WelcomeAction from '../actions/Welcome';
 
 class Welcome extends Component {
-  static navigationOptions = {
-    header: null
-  };
 
   constructor(props) {
     super(props);
@@ -30,8 +26,7 @@ class Welcome extends Component {
   }
 
   render() {
-      return <MasterView navigate={this.props.navigation.navigate}
-                         haveHeader={'KHÁM PHÁ'}
+      return <MasterView haveHeader={'KHÁM PHÁ'}
                          content={<WelcomeView navigate={this.props.navigation.navigate}
                                                onCardPress={this.onCardPress.bind(this)}
                                                listCategoriesCourses={this.props.list_category_course} />} />;

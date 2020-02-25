@@ -1,24 +1,13 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import MasterView from '../views/Master';
 import CourseDetailView from '../views/CourseDetail';
 import * as CourseDetailAction from '../actions/CourseDetail';
-import * as LoadingAction from "../actions/Loading";
-import LoadingComponent from "../components/Loading";
-import { HEADER_COLOR } from '../config/colors';
+import * as LoadingAction from '../actions/Loading';
+import LoadingComponent from '../components/Loading';
 
 class CourseDetail extends Component {
-    static navigationOptions = ({ navigation }) => ({
-        'title': navigation.state.params.name,
-        headerTitleStyle: {
-            color: 'white'
-        },
-        headerStyle:{
-            backgroundColor:HEADER_COLOR,
-        },
-        headerTintColor: 'white'
-    });
 
     constructor(props) {
         super(props);
@@ -29,7 +18,7 @@ class CourseDetail extends Component {
     }
 
     _getCourseVideos() {
-        const { navigation } = this.props;
+        const {navigation} = this.props;
         const id = navigation.getParam('id');
         this.props.showLoading(true);
 
@@ -37,7 +26,7 @@ class CourseDetail extends Component {
             this.props.showLoading(false);
         }).catch((error) => {
             this.props.showLoading(false);
-        })
+        });
     }
 
     onPressVideo(item) {
@@ -46,14 +35,16 @@ class CourseDetail extends Component {
 
     render() {
         if (this.props.loading) {
-            return <LoadingComponent />;
+            return <LoadingComponent/>;
         } else {
-            return <MasterView navigate={this.props.navigation.navigate}
+            return <MasterView navigation={this.props.navigation}
+                               haveHeader={" "}
+                               haveBackButton={true}
                                content={<CourseDetailView videoToPlay={this.props.choose_video}
                                                           navigate={this.props.navigation.navigate}
                                                           onPressVideo={this.onPressVideo.bind(this)}
                                                           videoList={this.props.course_video_list}/>}
-                   />;
+            />;
         }
     }
 }
