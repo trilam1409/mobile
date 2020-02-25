@@ -2,21 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MasterView from '../views/Master';
-import {Alert} from "react-native";
 import StaticScreenView from "../views/StaticScreen";
-import {HEADER_COLOR} from "../config/colors";
 
 class StaticScreen extends Component {
-    static navigationOptions = ({ navigation }) => ({
-        'title': navigation.state.params.title,
-        headerTitleStyle: {
-            color: 'white'
-        },
-        headerStyle:{
-            backgroundColor:HEADER_COLOR,
-        },
-        headerTintColor: 'white'
-    });
 
     constructor(props) {
         super(props);
@@ -27,7 +15,9 @@ class StaticScreen extends Component {
     }
 
     render() {
-        return <MasterView navigate={this.props.navigation.navigate}
+        return <MasterView navigation={this.props.navigation}
+                           haveHeader={"ĐIỀU KHOẢN"}
+                           haveBackButton={true}
                            content={<StaticScreenView staticContent={this._getStaticContent()}/>} />;
     }
 }

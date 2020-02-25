@@ -7,9 +7,6 @@ import * as MyCoursesAction from "../actions/MyCourses";
 import MyCoursesView from "../views/my_course_list/MyCoursesView";
 
 class MyCourses extends Component {
-    static navigationOptions = ({ navigation }) => ({
-        header: null
-    });
 
     constructor(props) {
         super(props);
@@ -25,13 +22,11 @@ class MyCourses extends Component {
     }
 
     onCardPress(item) {
-        console.log(item)
         this.props.navigation.navigate('CourseDetail', item);
     }
 
     render() {
-        return <MasterView navigate={this.props.navigation.navigate}
-                           haveHeader={'CÁC KHOÁ HỌC CỦA TÔI'}
+        return <MasterView haveHeader={'CÁC KHOÁ HỌC CỦA TÔI'}
                            content={<MyCoursesView listCourses={this.props.my_courses_list}
                                                    onCardPress={this.onCardPress.bind(this)}
                                     />}/>;

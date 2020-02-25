@@ -8,8 +8,9 @@ import * as LogoutAction from '../actions/Logout';
 import {Alert} from "react-native";
 
 class Menu extends Component {
+
     static navigationOptions = {
-        header: null
+        headerMode: 'none'
     };
 
     constructor(props) {
@@ -29,8 +30,7 @@ class Menu extends Component {
     }
 
     render() {
-        return <MasterView navigate={this.props.navigation.navigate}
-                           haveHeader={'TRANG CÁ NHÂN'}
+        return <MasterView haveHeader={'TRANG CÁ NHÂN'}
                            content={<MenuView navigate={this.props.navigation.navigate}
                            onLogoutPress={this._logout.bind(this)}
                            onMenuItemPress={this._onMenuItemPress.bind(this)}
