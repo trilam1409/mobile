@@ -9,12 +9,13 @@ import {ACTIVE_TAB_COLOR} from '../config/colors';
 /* Screens */
 import Welcome from '../components/Welcome';
 import CourseDetail from '../components/CourseDetail';
-import Login from '../components/Login';
+import Login from '../components/login/Login';
 import AuthLoading from '../components/AuthLoading';
 import Menu from '../components/Menu';
 import MyCourses from '../components/MyCourses';
 import FullScreenVideo from '../components/FullScreenVideo';
 import StaticScreen from '../components/StaticScreen';
+import ForgotPassword from '../components/login/ForgotPassword';
 
 const appNav = createBottomTabNavigator({
     // Welcome: {
@@ -31,7 +32,7 @@ const appNav = createBottomTabNavigator({
             tabBarLabel: 'MyCourses',
             tabBarIcon: ({tintColor}) => <Icon type={'material-community'} name={'library-video'} size={25}
                                                color={tintColor}/>,
-            swipeEnabled: false
+            swipeEnabled: false,
         }),
     },
     Menu: {
@@ -39,7 +40,7 @@ const appNav = createBottomTabNavigator({
         navigationOptions: ({navigation}) => ({
             tabBarLabel: 'Menu',
             tabBarIcon: ({tintColor}) => <Icon type={'ionicon'} name={'md-settings'} size={25} color={tintColor}/>,
-            swipeEnabled: false
+            swipeEnabled: false,
         }),
     },
 }, {
@@ -68,6 +69,12 @@ const authNav = createStackNavigator({
         headerMode: 'none',
         navigationOptions: ({navigation}) => ({headerShown: false}),
     },
+
+    ForgotPassword: {
+        screen: ForgotPassword,
+        headerMode: 'none',
+        navigationOptions: ({navigation}) => ({headerShown: false}),
+    },
 });
 
 const appStackNav = createStackNavigator({
@@ -75,8 +82,8 @@ const appStackNav = createStackNavigator({
         screen: appNav,
         headerMode: 'none',
         navigationOptions: ({navigation}) => ({
-            headerShown: false
-        })
+            headerShown: false,
+        }),
     },
     CourseDetail: {
         screen: CourseDetail,

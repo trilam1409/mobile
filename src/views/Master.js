@@ -46,11 +46,9 @@ export default function MasterView(props) {
                     </View>
                 </LinearGradientWrap>
             }
-            <ImageBackground
-                style={MasterStyles.bgImage}
-            >
+            <View>
                 {content}
-            </ImageBackground>
+            </View>
         </View>
     );
 }

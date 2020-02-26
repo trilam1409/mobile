@@ -14,5 +14,7 @@ export const MY_COURSES = '5e1be7c33100006e004f342d';
 // export const COURSE_DETAIL = '5e4b94483100001a01d8b59c';
 export const COURSE_DETAIL = '5e4ba65c3100006e00d8b676';
 
+export const FORGOT_PASSWORD = '5e55eb36300000570028e1d2';
+
 export const API_DOMAIN_URL = 'https://www.mocky.io/v2/';
 
