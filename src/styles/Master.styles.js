@@ -12,14 +12,14 @@ export const Styles = StyleSheet.create({
         alignItems:'center'
     },
     bgImage: {
-        flex: 1,
-        top: 0,
-        left: 0,
-        backgroundColor: '#f7f7f7',
-        width: SCREEN_WIDTH,
-        height: SCREEN_HEIGHT,
-        justifyContent: 'center',
-        alignItems: 'center'
+        // flex: 1,
+        // top: 0,
+        // left: 0,
+        // backgroundColor: '#f7f7f7',
+        // width: SCREEN_WIDTH,
+        // height: SCREEN_HEIGHT,
+        // justifyContent: 'center',
+        // alignItems: 'center'
     },
     innerContainer: {
         flexDirection:'column',
@@ -47,14 +47,5 @@ export const Styles = StyleSheet.create({
     bottomContainer: {
         flex:1.5,
         backgroundColor: '#ffffff'
-    },
-    loginContainer: {
-        paddingBottom: 100,
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        zIndex: 9999
     }
 });

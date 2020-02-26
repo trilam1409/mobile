@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Alert } from 'react-native';
 import { connect } from 'react-redux';
-import MasterView from '../views/Master';
-import LoginFormView from '../views/LoginForm';
-import LoadingComponent from '../components/Loading';
-import * as LoginAction from '../actions/Login';
-import * as LoadingAction from '../actions/Loading';
-import * as CacheService from '../services/Cache';
-import * as CredentialsUtil from '../utils/Credentials';
+import MasterView from '../../views/Master';
+import LoginView from '../../views/login/LoginView';
+import LoadingComponent from '../Loading';
+import * as LoginAction from '../../actions/Login';
+import * as LoadingAction from '../../actions/Loading';
+import * as CacheService from '../../services/Cache';
+import * as CredentialsUtil from '../../utils/Credentials';
 
 class Login extends Component {
 
@@ -16,7 +16,7 @@ class Login extends Component {
         super(props);
     }
 
-    submit(values) {
+    _submit(values) {
         this.props.showLoading(true);
         this.props
             .loginAccount(values)
@@ -32,11 +32,15 @@ class Login extends Component {
         });
     }
 
+    _forgotPassword = () => {
+        this.props.navigation.navigate('ForgotPassword');
+    }
+
     render() {
         if (this.props.loading) {
             return <LoadingComponent />;
         } else {
-            return <MasterView content={<LoginFormView onSubmit={(values) => this.submit(values)}/>}/>;
+            return <MasterView content={<LoginView onSubmit={(values) => this._submit(values)} forgotPassword={this._forgotPassword} />}/>
         }
     }
 }
