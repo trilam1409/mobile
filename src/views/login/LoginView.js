@@ -20,14 +20,6 @@ const LoginView = (props) => {
 
     const {onSubmit, forgotPassword} = props;
 
-    const [indicatorBtn, setIndicatorBtn] = useState(0);
-
-    const _handleSubmit = async () => {
-        setIndicatorBtn(1);
-        await onSubmit();
-    };
-
-
     const [slideInDown] = useState(new Animated.ValueXY({x: 0, y: 70}));
     const [fadeIn] =useState(new Animated.Value(0));
 
@@ -73,9 +65,9 @@ const LoginView = (props) => {
                                     .string()
                                     .required('Vui lòng nhập mật khẩu'),
                             })}
-                        onSubmit={_handleSubmit}
+                        onSubmit={(values) => onSubmit(values)}
                     >
-                        {({handleChange, handleBlur, handleSubmit, values, errors}) => (
+                        {({handleChange, handleBlur, handleSubmit, values, errors, isSubmitting}) => (
                             <View style={loginStyles.wrapForm}>
 
 
@@ -95,8 +87,8 @@ const LoginView = (props) => {
 
                                 <Button containerStyle={loginStyles.wrapButton} style={loginStyles.button}
                                         onPress={handleSubmit} title="Đăng nhập"
-                                        loading={indicatorBtn ? true : false}
-                                        disabled={indicatorBtn ? true : false}
+                                        loading={isSubmitting}
+                                        disabled={isSubmitting}
                                         ViewComponent={LinearGradient} // Don't forget this!
                                         linearGradientProps={{
                                             colors: ['#0283df', '#76bdf0'],

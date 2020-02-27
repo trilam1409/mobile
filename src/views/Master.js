@@ -46,7 +46,7 @@ export default function MasterView(props) {
                     </View>
                 </LinearGradientWrap>
             }
-            <View>
+            <View style={{flex: 1}}>
                 {content}
             </View>
         </View>

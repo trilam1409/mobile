@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import MasterView from '../views/Master';
-import * as LoadingAction from "../actions/Loading";
-import * as MyCoursesAction from "../actions/MyCourses";
-import MyCoursesView from "../views/my_course_list/MyCoursesView";
+import * as LoadingAction from '../actions/Loading';
+import * as MyCoursesAction from '../actions/MyCourses';
+import MyCoursesView from '../views/my_course_list/MyCoursesView';
+import {ActivityIndicator} from 'react-native';
 
 class MyCourses extends Component {
 
@@ -12,13 +13,16 @@ class MyCourses extends Component {
         super(props);
     }
 
-    componentDidMount() {
+    async componentDidMount(): void {
         this.props.showLoading(true);
-        this.props.getMyCoursesList().then(result => {
+
+        await this.props.getQuote();
+
+        await this.props.getMyCoursesList().then(result => {
             this.props.showLoading(false);
         }).catch(error => {
             this.props.showLoading(false);
-        })
+        });
     }
 
     onCardPress(item) {
@@ -26,10 +30,10 @@ class MyCourses extends Component {
     }
 
     render() {
-        return <MasterView haveHeader={'CÁC KHOÁ HỌC CỦA TÔI'}
-                           content={<MyCoursesView listCourses={this.props.my_courses_list}
+
+        return <MasterView content={<MyCoursesView listCourses={this.props.my_courses_list}
                                                    onCardPress={this.onCardPress.bind(this)}
-                                    />}/>;
+                                                   quote={this.props.quote}/>}/>;
     }
 }
 
@@ -39,7 +43,8 @@ class MyCourses extends Component {
 function mapStateToProps(state, props) {
     return {
         loading: state.loadingReducer.loading,
-        my_courses_list: state.myCoursesReducer.my_courses_list
+        my_courses_list: state.myCoursesReducer.my_courses_list,
+        quote: state.myCoursesReducer.quote,
     };
 }
 

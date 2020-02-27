@@ -16,6 +16,7 @@ import MyCourses from '../components/MyCourses';
 import FullScreenVideo from '../components/FullScreenVideo';
 import StaticScreen from '../components/StaticScreen';
 import ForgotPassword from '../components/login/ForgotPassword';
+import SetPassword from '../components/login/SetPassword';
 
 const appNav = createBottomTabNavigator({
     // Welcome: {
@@ -64,6 +65,7 @@ const appNav = createBottomTabNavigator({
 });
 
 const authNav = createStackNavigator({
+
     Login: {
         screen: Login,
         headerMode: 'none',
@@ -75,6 +77,14 @@ const authNav = createStackNavigator({
         headerMode: 'none',
         navigationOptions: ({navigation}) => ({headerShown: false}),
     },
+
+    SetPassword: {
+        screen: SetPassword,
+        headerMode: 'none',
+        navigationOptions: ({navigation}) => ({headerShown: false}),
+    }
+
+
 });
 
 const appStackNav = createStackNavigator({

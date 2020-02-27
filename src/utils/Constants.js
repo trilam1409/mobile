@@ -2,6 +2,8 @@ export const LOGIN_ACCOUNT = 'LOGIN_ACCOUNT';
 export const LOGOUT_ACCOUNT = 'LOGOUT_ACCOUNT';
 export const LOADING = 'LOADING';
 
+export const GET_QUOTE = 'GET_QUOTE';
+
 export const WELCOME = 'WELCOME';
 export const WELCOME_GET_CATEGORIES_COURSES = 'WELCOME_GET_CATEGORIES_COURSES';
 

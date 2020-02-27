@@ -2,20 +2,17 @@ import RestClient from '../services/RestClient';
 import * as RequestUtil from '../utils/Request';
 import * as EndpointUtils from '../utils/Endpoint';
 
-exports.forgotPassword = (data) => {
-
+exports.setPassword = (data) => {
     return new Promise((resolve, reject) => {
-        RestClient.getInstance().request(RequestUtil.POST_REQUEST, EndpointUtils.FORGOT_PASSWORD, data)
+        RestClient.getInstance().request(RequestUtil.POST_REQUEST, EndpointUtils.SET_PASSWORD, data)
             .then((responseData) => {
                 if (responseData.status.code != 200) {
                     return;
                 }
 
-                resolve(responseData);
-
-
+                resolve(responseData)
             }).catch((error) => {
-            reject(error);
-        });
-    });
-};
+                reject(error)
+        })
+    })
+}

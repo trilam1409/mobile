@@ -1,0 +1,11 @@
+{
+  "status": {
+    "code": 200,
+    "message": "Success"
+  },
+  "data": {
+    "quote": "\"Bác học không có nghĩa ngừng học\"",
+    "author": "Dawrwin",
+    "img_url": "https://i.ibb.co/HhscHg6/header-Home.png"
+  }
+}
