@@ -6,7 +6,6 @@ import MasterView from '../../views/Master';
 import LoginView from '../../views/login/LoginView';
 import LoadingComponent from '../Loading';
 import * as LoginAction from '../../actions/Login';
-import * as LoadingAction from '../../actions/Loading';
 import * as CacheService from '../../services/Cache';
 import * as CredentialsUtil from '../../utils/Credentials';
 
@@ -16,18 +15,16 @@ class Login extends Component {
         super(props);
     }
 
-    _submit(values) {
-        this.props.showLoading(true);
-        this.props
+    _submit = async (values) => {
+
+        await this.props
             .loginAccount(values)
             .then((result) => {
                 CacheService.storeToCache({ key: CredentialsUtil.ACCESS_TOKEN_CACHE_KEY, data: result.access_token }, {key: CredentialsUtil.USER_NAME, data: result.username}).then(() => {
-                this.props.showLoading(false);
                 this.props.navigation.navigate('App');
 
             });
         }).catch((error) => {
-            this.props.showLoading(false);
             Alert.alert('Fail', JSON.stringify(error));
         });
     }
@@ -51,7 +48,6 @@ class Login extends Component {
 function mapStateToProps(state, props) {
     return {
         login_data: state.loginReducer.login_data,
-        loading: state.loadingReducer.loading
     };
 }
 
@@ -59,7 +55,7 @@ function mapStateToProps(state, props) {
 // while wrapping them in dispatch() so that they immediately dispatch an Action.
 // Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(Object.assign({}, LoginAction, LoadingAction), dispatch);
+    return bindActionCreators(Object.assign({}, LoginAction), dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

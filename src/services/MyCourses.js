@@ -17,3 +17,19 @@ exports.getMyCoursesList = function() {
         });
     });
 };
+
+exports.getQuote = () => {
+    return new Promise((resolve, reject) => {
+        RestClient.getInstance().request(RequestUtil.GET_REQUEST, EndpointUtil.QUOTE, null)
+            .then((responseData) => {
+                if(responseData.status.code != 200) {
+                    reject(responseData.status.message);
+                    return;
+                }
+
+                resolve(responseData.data);
+            }).catch((error) => {
+            reject(error);
+        });
+    })
+}

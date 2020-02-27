@@ -6,21 +6,9 @@ export const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 export const Styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems:'center'
+        flex: 1
     },
-    bgImage: {
-        // flex: 1,
-        // top: 0,
-        // left: 0,
-        // backgroundColor: '#f7f7f7',
-        // width: SCREEN_WIDTH,
-        // height: SCREEN_HEIGHT,
-        // justifyContent: 'center',
-        // alignItems: 'center'
-    },
+
     innerContainer: {
         flexDirection:'column',
         flex: 1,
