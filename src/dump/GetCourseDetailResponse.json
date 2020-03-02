@@ -1,43 +1,110 @@
 {
-  "status" : {
+  "status": {
     "code": 200,
-    "message": "Login successfully"
+    "message": "Success"
   },
-  "data": [
-    {
-      "name": "React lifecycle",
-      "avatar_url": "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-      "video_id": "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4",
-      "subtitle": "Introduce about React lifecycle",
-      "duration": "3.54"
-    },
-    {
-      "name": "React fast learn",
-      "avatar_url": "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-      "video_id": "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4",
-      "subtitle": "Some tips and tricks about react native",
-      "duration": "3.55"
-    },
-    {
-      "name": "React combine redux",
-      "avatar_url": "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-      "subtitle": "How to manage react state easily",
-      "duration": "4.54",
-      "video_id": "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
-    },
-    {
-      "name": "React native",
-      "avatar_url": "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-      "subtitle": "React for mobile",
-      "duration": "5.56",
-      "video_id": "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
-    },
-    {
-      "name": "Decorate your react app",
-      "avatar_url": "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-      "subtitle": "How to use react style",
-      "duration": "3.2",
-      "video_id": "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
-    }
-  ]
+  "data": {
+    "course_name": "Lập trình PHP",
+    "attach_file": "",
+    "chapter": [
+      {
+        "chapter_name": "Chương 1: Nhập môn lập trình",
+        "number_videos": 3,
+        "section": [
+          {
+            "section_name": "Bài 1: Vòng lập if-else",
+            "lesson": [
+              {
+                "id": 1,
+                "video_url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+                "watched": "done"
+              },
+              {
+                "id": 2,
+                "video_url": "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8",
+                "watched": "progress"
+              }
+            ]
+          },
+          {
+            "section_name": "Bài 2: Vòng lập while",
+            "lesson": [
+              {
+                "id": 3,
+                "video_url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+                "watched": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "chapter_name": "Chương 2: Cấu trúc dữ liệu và giải thuật",
+        "number_videos": 3,
+        "section": [
+          {
+            "section_name": "Bài 3: Cấu trúc dữ ",
+            "lesson": [
+              {
+                "id": 4,
+                "video_url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+                "watched": "done"
+              },
+              {
+                "id": 5,
+                "video_url": "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8",
+                "watched": "progress"
+              },
+              {
+                "id": 6,
+                "video_url": "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8",
+                "watched": "progress"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "chapter_name": "Chương 3: Lập trình hướng đối tượng",
+        "number_videos": 4,
+        "section": [
+          {
+            "section_name": "Bài 4: OOP là gì?",
+            "lesson": [
+              {
+                "id": 7,
+                "video_url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+                "watched": "done"
+              }
+            ]
+          },
+          {
+            "section_name": "Bài 5: Kiến thức cơ bản của lập trình hướng đối tượng",
+            "lesson": [
+              {
+                "id": 8,
+                "video_url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+                "watched": "done"
+              }
+            ]
+          },
+          {
+            "section_name": "Bài 6: Hướng đối tượng trong Java",
+            "lesson": [
+              {
+                "id": 9,
+                "video_url": "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8",
+                "watched": "done"
+              },
+              {
+                "id": 10,
+                "video_url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+                "watched": "done"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }

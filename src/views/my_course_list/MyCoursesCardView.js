@@ -72,7 +72,7 @@ export default function MyCoursesCardView(props) {
                             source={{uri: image_url}}
                         />
                     </View>
-                    <View style={{flex: 5, paddingLeft: 12}}>
+                    <View style={{flex: 5, paddingLeft: 12, justifyContent: 'space-between'}}>
                         <Text style={Styles.nameCourse} numberOfLines={2} ellipsizeMode='tail'>
                             {name}
                         </Text>

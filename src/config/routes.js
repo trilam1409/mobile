@@ -11,7 +11,7 @@ import Welcome from '../components/Welcome';
 import CourseDetail from '../components/CourseDetail';
 import Login from '../components/login/Login';
 import AuthLoading from '../components/AuthLoading';
-import Menu from '../components/Menu';
+import Profile from '../components/Profile';
 import MyCourses from '../components/MyCourses';
 import FullScreenVideo from '../components/FullScreenVideo';
 import StaticScreen from '../components/StaticScreen';
@@ -30,17 +30,17 @@ const appNav = createBottomTabNavigator({
     MyCourses: {
         screen: MyCourses,
         navigationOptions: ({navigation}) => ({
-            tabBarLabel: 'MyCourses',
+            tabBarLabel: 'Khoá học',
             tabBarIcon: ({tintColor}) => <Icon type={'material-community'} name={'library-video'} size={25}
                                                color={tintColor}/>,
             swipeEnabled: false,
         }),
     },
     Menu: {
-        screen: Menu,
+        screen: Profile,
         navigationOptions: ({navigation}) => ({
-            tabBarLabel: 'Menu',
-            tabBarIcon: ({tintColor}) => <Icon type={'ionicon'} name={'md-settings'} size={25} color={tintColor}/>,
+            tabBarLabel: 'Hồ sơ',
+            tabBarIcon: ({tintColor}) => <Icon type={'ionicon'} name={'ios-person'} size={25} color={tintColor}/>,
             swipeEnabled: false,
         }),
     },

@@ -14,7 +14,7 @@ exports.loginAccount = function(data) {
                     return;
                 }
 
-                resolve({access_token: responseData.data.access_token, username: responseData.data.user_name});
+                resolve(responseData.data);
             }).catch((error) => {
                 reject(error);
             });
