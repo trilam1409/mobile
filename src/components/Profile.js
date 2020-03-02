@@ -3,25 +3,25 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MasterView from '../views/Master';
 import { createStackNavigator } from 'react-navigation';
-import MenuView from '../views/Menu';
+import ProfileView from '../views/ProfileView';
 import * as LogoutAction from '../actions/Logout';
 import {Alert} from "react-native";
 
-class Menu extends Component {
-
-    static navigationOptions = {
-        headerMode: 'none'
-    };
+class Profile extends Component {
 
     constructor(props) {
         super(props);
     }
 
-    _onMenuItemPress(content, title) {
+    componentDidMount(): void {
+       console.log( this.props.login_data)
+    }
+
+    _onMenuItemPress = (content, title) => {
         this.props.navigation.navigate('StaticScreen', {content: content, title: title});
     }
 
-    _logout() {
+    _logout = () => {
         this.props.logoutAccount().then(() => {
             this.props.navigation.navigate('Login');
         }).catch((e) => {
@@ -30,10 +30,10 @@ class Menu extends Component {
     }
 
     render() {
-        return <MasterView haveHeader={'TRANG CÁ NHÂN'}
-                           content={<MenuView navigate={this.props.navigation.navigate}
-                           onLogoutPress={this._logout.bind(this)}
-                           onMenuItemPress={this._onMenuItemPress.bind(this)}
+        return <MasterView content={<ProfileView navigate={this.props.navigation.navigate}
+                           onLogoutPress={this._logout}
+                           onMenuItemPress={this._onMenuItemPress}
+                                                            userData={this.props.login_data}
                            />} />;
     }
 }
@@ -43,7 +43,7 @@ class Menu extends Component {
 // This function makes Redux know that this component needs to be passed a piece of the state
 function mapStateToProps(state, props) {
     return {
-
+        login_data: state.loginReducer.login_data
     };
 }
 
@@ -54,4 +54,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(Object.assign({}, LogoutAction), dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

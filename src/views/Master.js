@@ -24,14 +24,7 @@ export default function MasterView(props) {
                     }}
                     >
                         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
-                            <Icon name={'chevron-left'} color={'white'} size={21}/>
-                            <Text style={{
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: 18,
-                            }}>
-                                Back
-                            </Text>
+                            <Icon name={'chevron-left'} color={'white'} size={24}/>
                         </View>
                     </TouchableHighlight>
                 </View>

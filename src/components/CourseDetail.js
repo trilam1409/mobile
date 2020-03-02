@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import MasterView from '../views/Master';
-import CourseDetailView from '../views/CourseDetail';
+import CourseDetailView from '../views/course_detail/CourseDetailView';
 import * as CourseDetailAction from '../actions/CourseDetail';
 import * as LoadingAction from '../actions/Loading';
 import LoadingComponent from '../components/Loading';
@@ -29,7 +29,8 @@ class CourseDetail extends Component {
         });
     }
 
-    onPressVideo(item) {
+    onPressVideo = (item) => {
+        console.log(item)
         this.props.chooseVideo(item);
     }
 
@@ -38,11 +39,11 @@ class CourseDetail extends Component {
             return <LoadingComponent/>;
         } else {
             return <MasterView navigation={this.props.navigation}
-                               haveHeader={" "}
                                haveBackButton={true}
-                               content={<CourseDetailView videoToPlay={this.props.choose_video}
-                                                          navigate={this.props.navigation.navigate}
-                                                          onPressVideo={this.onPressVideo.bind(this)}
+                               content={<CourseDetailView
+                                  videoToPlay={this.props.choose_video}
+                                  // navigate={this.props.navigation.navigate}
+                                   onPressVideo={this.onPressVideo}
                                                           videoList={this.props.course_video_list}/>}
             />;
         }

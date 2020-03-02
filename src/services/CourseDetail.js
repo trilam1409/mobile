@@ -16,7 +16,7 @@ exports.getCourseVideoList = function(courseId = null) {
                     return reject('Fail in getting course detail');
                 }
 
-                resolve(responseData.data.lessions);
+                resolve(responseData.data);
             })
             .catch(error => {
                 reject(error);

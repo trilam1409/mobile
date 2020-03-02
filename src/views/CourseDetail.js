@@ -13,7 +13,7 @@ import YouTube from 'react-native-youtube';
 import VideoPlayer from 'react-native-video-controls';
 import * as Credentials from "../config/credentials";
 import { Style as CourseDetailStyle } from '../styles/CourseDetail.styles';
-import VideoSectionsList from './course_detail/VideoSectionsList';
+import VideoSectionsList from './course_detail/VideoSectionList';
 
 export default class CourseDetail extends Component {
     constructor(props) {
