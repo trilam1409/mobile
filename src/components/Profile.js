@@ -14,7 +14,6 @@ class Profile extends Component {
     }
 
     componentDidMount(): void {
-       console.log( this.props.login_data)
     }
 
     _onMenuItemPress = (content, title) => {

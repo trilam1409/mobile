@@ -16,36 +16,47 @@ const MenuProfileView = (props) => {
     return (
         <View style={Styles.container}>
 
-            <ListItem
-                key={0}
-                title={'Quản lý thông báo'}
-                leftIcon={<View style={Styles.iconStyle}><Icon type={'material-community'} name={'bell'} color={'#FFBC42'}
-                                                 size={wp(5)}/></View>}
-                chevron
-                bottomDivider
-                titleStyle={Styles.titleStyle}
-                containerStyle={Styles.containerStyle}
-                onPress={() => console.log('ddd')}
-            />
-            <ListItem
-                key={1}
-                title={'Điều khoản sử dụng'}
-                leftIcon={<View style={Styles.iconStyle}><Icon type={'ionicon'} name={'md-paper'} color={'#F16B6F'} size={wp(5)}/></View>}
-                chevron
-                bottomDivider
-                titleStyle={Styles.titleStyle}
-                containerStyle={Styles.containerStyle}
-                onPress={() => onMenuItemPress(Term(), 'ĐIỀU KHOẢN SỬ DỤNG')}
-            />
-            <ListItem
-                key={2}
-                title={'Đăng xuất'}
-                leftIcon={<View style={[Styles.iconStyle, {  borderBottomColor: 'transparent'}]}><Icon type={'ionicon'} name={'ios-log-out'} color={'#6d9d88'} size={wp(5)}/></View>}
-                chevron
-                titleStyle={Styles.titleStyle}
-                onPress={onLogoutPress}
-                containerStyle={Styles.containerStyle}
-            />
+            <Ripple>
+                <ListItem
+                    key={0}
+                    title={'Quản lý thông báo'}
+                    leftIcon={<View style={Styles.iconStyle}><Icon type={'material-community'} name={'bell'}
+                                                                   color={'#FFBC42'}
+                                                                   size={wp(5)}/></View>}
+                    chevron
+                    bottomDivider
+                    titleStyle={Styles.titleStyle}
+                    containerStyle={Styles.containerStyle}
+                />
+            </Ripple>
+
+            <Ripple onPress={() => onMenuItemPress(Term(), 'ĐIỀU KHOẢN SỬ DỤNG')}>
+                <ListItem
+                    key={1}
+                    title={'Điều khoản sử dụng'}
+                    leftIcon={<View style={Styles.iconStyle}><Icon type={'ionicon'} name={'md-paper'} color={'#F16B6F'}
+                                                                   size={wp(5)}/></View>}
+                    chevron
+                    bottomDivider
+                    titleStyle={Styles.titleStyle}
+                    containerStyle={Styles.containerStyle}
+                />
+            </Ripple>
+
+            <Ripple  onPress={onLogoutPress}>
+                <ListItem
+                    key={2}
+                    title={'Đăng xuất'}
+                    leftIcon={<View style={[Styles.iconStyle, {borderBottomColor: 'transparent'}]}><Icon
+                        type={'ionicon'}
+                        name={'ios-log-out'}
+                        color={'#6d9d88'}
+                        size={wp(5)}/></View>}
+                    chevron
+                    titleStyle={Styles.titleStyle}
+                    containerStyle={Styles.containerStyle}
+                />
+            </Ripple>
         </View>
     );
 };
@@ -53,17 +64,18 @@ const MenuProfileView = (props) => {
 const Styles = StyleSheet.create({
 
     container: {
-        borderTopColor: "#bcbbc1",
+        borderTopColor: '#bcbbc1',
         borderTopWidth: .5,
         borderBottomWidth: .5,
-        borderBottomColor: "#bcbbc1",
-        backgroundColor: '#fff'
+        borderBottomColor: '#bcbbc1',
+        backgroundColor: '#fff',
+        marginBottom: wp(20),
     },
     containerStyle: {
         paddingBottom: 0,
         paddingLeft: 0,
         paddingRight: 5,
-        marginRight: 16
+        marginRight: 16,
     },
 
     iconStyle: {

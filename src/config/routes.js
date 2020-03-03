@@ -51,6 +51,7 @@ const appNav = createBottomTabNavigator({
         indicatorStyle: {
             backgroundColor: ACTIVE_TAB_COLOR,
             height: 43,
+            borderTopColor: '#0283df',
         },
         activeTintColor: '#0283df',
         inactiveTintColor: 'grey',
@@ -59,7 +60,8 @@ const appNav = createBottomTabNavigator({
             backgroundColor: 'white',
             paddingTop: 10,
             height: 53,
-            borderTopColor: 'transparent',
+            borderTopWidth: 2,
+            borderTopColor: '#e8e9eb',
         },
     },
 });

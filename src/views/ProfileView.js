@@ -3,7 +3,7 @@ import {
     Image,
     Text,
     View,
-    StyleSheet, SafeAreaView, Dimensions,
+    StyleSheet, SafeAreaView, Dimensions, ScrollView, ActivityIndicator
 } from 'react-native';
 
 import {Avatar, Card} from 'react-native-elements';
@@ -23,13 +23,15 @@ const ProfileView = (props) => {
     return (
         <View style={Styles.container}>
 
-            <View>
-            <AutoHeightImage width={Dimensions.get('window').width} style={Styles.imageHeader}
+
+            <AutoHeightImage in width={Dimensions.get('window').width} style={Styles.imageHeader}
                              source={require('../../assets/images/headerProfile.png')}/>
+
 
             <SafeAreaView>
                 <View style={Styles.wrapInfo}>
                     <Avatar
+                        placeholderStyle={{backgroundColor: '#fff'}}
                         width={100}
                         height={100}
                         rounded
@@ -41,7 +43,8 @@ const ProfileView = (props) => {
                 <View style={Styles.wrapCard}>
                     <View style={Styles.cardInner}>
 
-                        <LinearGradient style={Styles.wrapNumber} colors={['#005C97', '#363795']} start={{x: 0, y: 0}}
+                        <LinearGradient style={Styles.wrapNumber} colors={['#005C97', '#363795']}
+                                        start={{x: 0, y: 0}}
                                         end={{x: 1, y: 0}}>
                             <Text style={Styles.textNumber}>{userData.course_wait}</Text>
                         </LinearGradient>
@@ -49,7 +52,8 @@ const ProfileView = (props) => {
                         <Text style={Styles.textCardInfo}>Số khoá chưa học</Text>
                     </View>
                     <View style={Styles.cardInner}>
-                        <LinearGradient style={Styles.wrapNumber} colors={['#76b852', '#8DC26F']} start={{x: 0, y: 0}}
+                        <LinearGradient style={Styles.wrapNumber} colors={['#76b852', '#8DC26F']}
+                                        start={{x: 0, y: 0}}
                                         end={{x: 1, y: 0}}>
                             <Text style={Styles.textNumber}>{userData.course_studied}</Text>
                         </LinearGradient>
@@ -60,12 +64,12 @@ const ProfileView = (props) => {
 
                 <MenuProfileView onLogoutPress={onLogoutPress} onMenuItemPress={onMenuItemPress}/>
 
+                {/*<View style={Styles.logoFooter}>*/}
+                {/*<AutoHeightImage width={130} source={require('../../assets/images/vnwl_logo.png')}/>*/}
+                {/*</View>*/}
 
             </SafeAreaView>
-            </View>
-            <View style={Styles.logoFooter}>
-                <AutoHeightImage width={130} source={require('../../assets/images/vnwl_logo.png')}/>
-            </View>
+
 
         </View>
     );
@@ -139,8 +143,8 @@ const Styles = StyleSheet.create({
 
     logoFooter: {
         alignItems: 'center',
-        paddingBottom: 20
-    }
+        paddingBottom: 20,
+    },
 });
 
 export default ProfileView;

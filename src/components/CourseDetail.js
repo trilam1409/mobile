@@ -17,6 +17,7 @@ class CourseDetail extends Component {
         this._getCourseVideos();
     }
 
+
     _getCourseVideos() {
         const {navigation} = this.props;
         const id = navigation.getParam('id');
@@ -30,9 +31,8 @@ class CourseDetail extends Component {
     }
 
     onPressVideo = (item) => {
-        console.log(item)
         this.props.chooseVideo(item);
-    }
+    };
 
     render() {
         if (this.props.loading) {
@@ -41,10 +41,10 @@ class CourseDetail extends Component {
             return <MasterView navigation={this.props.navigation}
                                haveBackButton={true}
                                content={<CourseDetailView
-                                  videoToPlay={this.props.choose_video}
-                                  // navigate={this.props.navigation.navigate}
+                                   videoToPlay={this.props.choose_video}
+                                   // navigate={this.props.navigation.navigate}
                                    onPressVideo={this.onPressVideo}
-                                                          videoList={this.props.course_video_list}/>}
+                                   videoList={this.props.course_video_list}/>}
             />;
         }
     }
@@ -57,7 +57,7 @@ function mapStateToProps(state, props) {
     return {
         course_video_list: state.courseDetailReducer.course_video_list,
         loading: state.loadingReducer.loading,
-        choose_video: state.courseDetailReducer.choose_video
+        choose_video: state.courseDetailReducer.choose_video,
     };
 }
 
