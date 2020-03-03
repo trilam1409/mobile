@@ -38,6 +38,7 @@ const Styles = StyleSheet.create({
     logo: {
         flexDirection: 'column',
         alignItems: 'center',
+        paddingBottom: 20
     },
 });
 
