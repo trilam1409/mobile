@@ -6,6 +6,7 @@ export const getCourseVideoList = (courseId = null) => {
         return new Promise((resolve, reject) => {
             CourseDetail.getCourseVideoList(courseId).then((data) => {
                 dispatch({ type: GET_COURSE_VIDEO_LIST, course_video_list: data });
+                dispatch({ type: CHOOSE_COURSE_VIDEO, choose_video:  data.chapter[0].section[0].lesson[0] });
                 resolve(data);
             }).catch((error) => {
                 reject(error);

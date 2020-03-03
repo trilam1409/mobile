@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {FlatList, SafeAreaView, StyleSheet, View, Dimensions} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet, View, Dimensions, ActivityIndicator} from 'react-native';
 import {Text} from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -15,48 +15,6 @@ const CourseDetailView = (props) => {
 
     const {chapter} = videoList;
 
-    console.log('list', chapter[0].section[0].lesson[0]);
-
-    useEffect(() => {
-        _videoRender();
-    })
-
-    const _getVideo = () => {
-
-        if (!videoList) {
-            return;
-        }
-
-        console.log('get');
-
-        const video = chapter[0].section[0].lesson[0];
-
-        console.log('video', video);
-        console.log('toplay', videoToPlay);
-        return (Object.entries(videoToPlay).length ? videoToPlay : video);
-    };
-
-
-    const _videoRender = () => {
-        let videoUrl = _getVideo().video_url;
-
-        console.log('getvideo', videoUrl);
-
-        return <Video source={{uri: videoUrl}}
-                      style={Styles.backgroundVideo}
-                      autoplay={true}
-                      controls={true}
-                      disableFocus={true}
-
-                      fullscreen={true}
-                      resizeMode="cover"
-
-        />;
-
-
-    };
-
-
     return (
         <View style={{flex: 1, alignSelf: 'stretch'}}>
 
@@ -70,9 +28,17 @@ const CourseDetailView = (props) => {
 
             <SafeAreaView style={{flex: 1}}>
                 <View style={Styles.wrapVideo}>
-                    {_videoRender()}
-                </View>
 
+                    <Video key={videoToPlay.id}
+                           source={{uri: videoToPlay.video_url}}
+                           style={Styles.backgroundVideo}
+                           autoplay={true}
+                           controls={true}
+                           disableFocus={true}
+                           resizeMode="cover"
+                    />
+
+                </View>
 
                 <FlatList data={chapter} renderItem={(item) => {
                     return <VideoChapterList item={item} onPressVideo={onPressVideo} videoToPlay={videoToPlay}/>;
