@@ -7,7 +7,6 @@ import {Icon} from 'react-native-elements';
 import {ACTIVE_TAB_COLOR} from '../config/colors';
 
 /* Screens */
-import Welcome from '../components/Welcome';
 import CourseDetail from '../components/CourseDetail';
 import Login from '../components/login/Login';
 import AuthLoading from '../components/AuthLoading';
@@ -19,14 +18,7 @@ import ForgotPassword from '../components/login/ForgotPassword';
 import SetPassword from '../components/login/SetPassword';
 
 const appNav = createBottomTabNavigator({
-    // Welcome: {
-    //     screen: Welcome,
-    //     navigationOptions: {
-    //         tabBarLabel:"Home",
-    //         tabBarIcon: ({ tintColor }) => <Icon name={"home"} size={30} color={tintColor} />,
-    //         swipeEnabled: false
-    //     }
-    // },
+
     MyCourses: {
         screen: MyCourses,
         navigationOptions: ({navigation}) => ({

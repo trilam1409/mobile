@@ -1,8 +1,7 @@
 import React from 'react';
 import {ListItem, Icon} from 'react-native-elements';
-import {View} from 'react-native';
-import {Term} from './static_content/Term';
-import {StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {Term} from '../static_content/Term';
 
 import Ripple from 'react-native-material-ripple';
 
