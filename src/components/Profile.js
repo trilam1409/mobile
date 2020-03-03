@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MasterView from '../views/Master';
-import { createStackNavigator } from 'react-navigation';
-import ProfileView from '../views/ProfileView';
+import ProfileView from '../views/profile/ProfileView';
 import * as LogoutAction from '../actions/Logout';
 import {Alert} from "react-native";
 

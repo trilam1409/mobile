@@ -1,17 +1,12 @@
 import React from 'react';
 import {
-    Image,
     Text,
     View,
-    StyleSheet, SafeAreaView, Dimensions, ScrollView, ActivityIndicator
+    StyleSheet, SafeAreaView, Dimensions
 } from 'react-native';
 
 import {Avatar, Card} from 'react-native-elements';
-import {Term} from '../views/static_content/Term';
-import SettingsList from 'react-native-settings-list';
 import AutoHeightImage from 'react-native-auto-height-image';
-import {getFromCache} from '../services/Cache';
-import * as CredentialsUtil from '../utils/Credentials';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -25,7 +20,7 @@ const ProfileView = (props) => {
 
 
             <AutoHeightImage in width={Dimensions.get('window').width} style={Styles.imageHeader}
-                             source={require('../../assets/images/headerProfile.png')}/>
+                             source={require('../../../assets/images/headerProfile.png')}/>
 
 
             <SafeAreaView>
