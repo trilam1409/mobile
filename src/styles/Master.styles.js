@@ -1,5 +1,4 @@
 import {Dimensions, StyleSheet} from "react-native";
-import { HEADER_COLOR } from '../config/colors';
 
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const SCREEN_HEIGHT = Dimensions.get('window').height;

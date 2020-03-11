@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { Alert } from 'react-native';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {Alert} from 'react-native';
+import {connect} from 'react-redux';
 import MasterView from '../../views/Master';
 import LoginView from '../../views/login/LoginView';
 import LoadingComponent from '../Loading';
@@ -20,24 +20,29 @@ class Login extends Component {
         await this.props
             .loginAccount(values)
             .then((result) => {
-                CacheService.storeToCache({ key: CredentialsUtil.ACCESS_TOKEN_CACHE_KEY, data: result.access_token }, {key: CredentialsUtil.USER_NAME, data: result.username}).then(() => {
-                this.props.navigation.navigate('App');
+                CacheService.storeToCache({
+                    key: CredentialsUtil.ACCESS_TOKEN_CACHE_KEY,
+                    data: result.access_token,
+                }).then(() => {
+                    this.props.navigation.navigate('App');
 
+                });
+
+            }).catch((error) => {
+                Alert.alert('Fail', JSON.stringify(error));
             });
-        }).catch((error) => {
-            Alert.alert('Fail', JSON.stringify(error));
-        });
-    }
+    };
 
     _forgotPassword = () => {
         this.props.navigation.navigate('ForgotPassword');
-    }
+    };
 
     render() {
         if (this.props.loading) {
-            return <LoadingComponent />;
+            return <LoadingComponent/>;
         } else {
-            return <MasterView content={<LoginView onSubmit={(values) => this._submit(values)} forgotPassword={this._forgotPassword} />}/>
+            return <MasterView content={<LoginView onSubmit={(values) => this._submit(values)}
+                                                   forgotPassword={this._forgotPassword}/>}/>;
         }
     }
 }

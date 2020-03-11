@@ -1,4 +1,5 @@
 export const LOGIN_ACCOUNT = 'LOGIN_ACCOUNT';
+export const MY_PROFILE = 'MY_PROFILE';
 export const LOGOUT_ACCOUNT = 'LOGOUT_ACCOUNT';
 export const LOADING = 'LOADING';
 

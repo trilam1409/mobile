@@ -9,11 +9,12 @@ import {Avatar, Card} from 'react-native-elements';
 import AutoHeightImage from 'react-native-auto-height-image';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
+import {API_DOMAIN_URL} from '../../utils/Endpoint';
 
 import MenuProfileView from './MenuProfileView';
 
 const ProfileView = (props) => {
-    const {onLogoutPress, onMenuItemPress, userData} = props;
+    const {onLogoutPress, onMenuItemPress, myProfile} = props;
 
     return (
         <View style={Styles.container}>
@@ -23,16 +24,16 @@ const ProfileView = (props) => {
                              source={require('../../../assets/images/headerProfile.png')}/>
 
 
-            <SafeAreaView>
+            <SafeAreaView style={{flex: 1}}>
                 <View style={Styles.wrapInfo}>
                     <Avatar
                         placeholderStyle={{backgroundColor: '#fff'}}
                         width={100}
                         height={100}
                         rounded
-                        source={{uri: userData.avatar}}
+                        source={myProfile.avatar ? {uri: API_DOMAIN_URL + 'media/' + myProfile.avatar} : require('../../../assets/images/userAvatarDefault.jpg')}
                     />
-                    <Text style={Styles.textName}>{userData.full_name}</Text>
+                    <Text style={Styles.textName}>{myProfile.full_name}</Text>
                 </View>
 
                 <View style={Styles.wrapCard}>
@@ -41,7 +42,7 @@ const ProfileView = (props) => {
                         <LinearGradient style={Styles.wrapNumber} colors={['#005C97', '#363795']}
                                         start={{x: 0, y: 0}}
                                         end={{x: 1, y: 0}}>
-                            <Text style={Styles.textNumber}>{userData.course_wait}</Text>
+                            <Text style={Styles.textNumber}>{myProfile.course_not_learn}</Text>
                         </LinearGradient>
 
                         <Text style={Styles.textCardInfo}>Số khoá chưa học</Text>
@@ -50,7 +51,7 @@ const ProfileView = (props) => {
                         <LinearGradient style={Styles.wrapNumber} colors={['#76b852', '#8DC26F']}
                                         start={{x: 0, y: 0}}
                                         end={{x: 1, y: 0}}>
-                            <Text style={Styles.textNumber}>{userData.course_studied}</Text>
+                            <Text style={Styles.textNumber}>{myProfile.course_complete}</Text>
                         </LinearGradient>
 
                         <Text style={Styles.textCardInfo}>Số khoá hoàn thành</Text>

@@ -11,7 +11,9 @@ exports.getMyCoursesList = function() {
                     return;
                 }
 
-                resolve(responseData.data);
+                let responseArr = Object.keys(responseData.data).map((k) => responseData.data[k]);
+
+                resolve(responseArr);
             }).catch((error) => {
             reject(error);
         });
@@ -33,3 +35,22 @@ exports.getQuote = () => {
         });
     })
 }
+
+exports.getProfileService = function () {
+    return new Promise((resolve, reject) => {
+        RestClient
+            .getInstance()
+            .request(RequestUtil.GET_REQUEST, EndpointUtil.PROFILE, null, true)
+            .then((responseData) => {
+
+                if (responseData.status.code != 200) {
+                    reject(responseData.status.message);
+                    return;
+                }
+
+                resolve(responseData.data);
+            }).catch((error) => {
+            reject(error);
+        });
+    });
+};

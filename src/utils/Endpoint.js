@@ -1,27 +1,41 @@
-// export const LOGIN = 'user/login';
-// export const LOGOUT = 'user/logout';
-// export const MY_COURSES = 'courses';
-// export const COURSE_DETAIL = 'course';
+// export const LOGIN = '5e58b0882f0000be0c96208b';
+// export const LOGOUT = '5e1c350d320000500022828f';
+// export const MY_COURSES = '5e574a6c3000005f00fd38ca';
 //
-// export const API_DOMAIN_URL = 'http://13.251.89.71:8083/eduworks-api/v1/';
+// export const COURSE_DETAIL = '5e579b113000003d00fd3b7a';
+//
+// export const FORGOT_PASSWORD = '5e55eb36300000570028e1d2';
+//
+// export const SET_PASSWORD = '5e55eb36300000570028e1d2';
+//
+// export const QUOTE = '5e5767013000005f00fd3996';
+//
+// export const API_DOMAIN_URL = 'https://www.mocky.io/v2/';
 
-// export const API_DOMAIN_URL = 'http://127.0.0.1:8080/eduworks-api/v1/';
-//export const CLOUDFRONT_DOMAIN = 'https://dqavjuo472auk.cloudfront.net';
+// export const LOGIN = 'login';
+// export const LOGOUT = 'logout';
+// export const MY_COURSES = 'my-courses';
+//
+// export const COURSE_DETAIL = 'course-detail';
+//
+// export const FORGOT_PASSWORD = '5e55eb36300000570028e1d2';
+//
+// export const SET_PASSWORD = '5e55eb36300000570028e1d2';
+//
+// export const QUOTE = 'quote';
+//
+// export const API_DOMAIN_URL = 'https://tri-lam.herokuapp.com/api/dump/';
 
-export const LOGIN = '5e58b0882f0000be0c96208b';
-export const LOGOUT = '5e1c350d320000500022828f';
-export const MY_COURSES = '5e574a6c3000005f00fd38ca';
-// export const COURSE_DETAIL = '5e4b94483100001a01d8b59c';
-//export const COURSE_DETAIL = '5e4ba65c3100006e00d8b676' OLD;
+export const LOGIN = 'oauth/v2/token';
 
-export const COURSE_DETAIL = '5e579b113000003d00fd3b7a';
+export const MY_COURSES = 'api/v1/employee/courses';
 
-export const FORGOT_PASSWORD = '5e55eb36300000570028e1d2';
+export const COURSE_DETAIL = 'api/v1/employee/course-details';
 
-export const SET_PASSWORD = '5e55eb36300000570028e1d2';
+export const PROFILE = 'api/v1/employee/profile';
 
-export const QUOTE = '5e5767013000005f00fd3996';
+export const QUOTE = 'quote';
 
-export const API_DOMAIN_URL = 'https://www.mocky.io/v2/';
+export const API_DOMAIN_URL = 'https://dev-vlb.vietnamworks.com/app_dev.php/';
 
 

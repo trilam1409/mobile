@@ -6,7 +6,7 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 const FieldInputPipe = (props) => {
 
-    const {onChangeText, onBlur, value, placeholder, errors, secureTextEntry = false} = props;
+    const {onChangeText, onBlur, value, placeholder, errors, secureTextEntry = false, touched} = props;
 
     return (
         <View>
@@ -19,8 +19,9 @@ const FieldInputPipe = (props) => {
                 containerStyle={[Styles.wrapInput]}
                 inputContainerStyle={Styles.containerInput}
                 inputStyle={Styles.input}
+                autoCapitalize = 'none'
             />
-            {errors &&
+            {touched && errors &&
             <Text style={Styles.textError}>{errors}</Text>
             }
         </View>

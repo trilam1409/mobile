@@ -1,7 +1,6 @@
-import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
-import {Card, Icon, ListItem} from 'react-native-elements';
-import VideoList from './VideosList';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, FlatList, TouchableWithoutFeedback} from 'react-native';
+import Collapse from 'react-native-collapsible';
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
@@ -12,26 +11,36 @@ const VideoChapterList = (props) => {
 
     const {chapter_name, number_videos, section} = item.item;
 
+
+    let [collapse, setCollapse] = useState(!item.index ? false : true);
+
+
     return (
         <View style={Styles.chapterContainer}>
-            <View style={Styles.chapterInner}>
 
-                <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}
-                                colors={['#444973', '#4C6785', '#5E7367']}>
-                    <Text style={Styles.indexChapter}>{item.index + 1}</Text>
-                </LinearGradient>
-                <View style={Styles.chapterNameWrap}>
-                    <Text style={Styles.textName} numberOfLines={1} ellipsizeMode='tail'>{chapter_name}</Text>
-                    <Text style={Styles.textVideo}>{number_videos} video</Text>
+            <TouchableWithoutFeedback onPress={() => setCollapse(!collapse)}>
+                <View style={Styles.chapterInner}>
+
+                    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}
+                                    colors={['#444973', '#4C6785', '#5E7367']}>
+                        <Text style={Styles.indexChapter}>{item.index + 1}</Text>
+                    </LinearGradient>
+                    <View style={Styles.chapterNameWrap}>
+                        <Text style={Styles.textName} numberOfLines={1} ellipsizeMode='tail'>{chapter_name}</Text>
+                        <Text style={Styles.textVideo}>{number_videos} video</Text>
+                    </View>
+
+
                 </View>
+            </TouchableWithoutFeedback>
 
+            <Collapse collapsed={collapse}>
 
-            </View>
-
-            <FlatList data={section} renderItem={(item) => {
-                return <VideoSectionList item={item} onPressVideo={onPressVideo} videoToPlay={videoToPlay}/>;
-            }}
-                      keyExtractor={(item, index) => index.toString()}/>
+                <FlatList data={section} renderItem={(item) => {
+                    return <VideoSectionList item={item} onPressVideo={onPressVideo} videoToPlay={videoToPlay}/>;
+                }}
+                          keyExtractor={(item, index) => index.toString()}/>
+            </Collapse>
         </View>
 
     );
@@ -41,7 +50,7 @@ const Styles = StyleSheet.create({
     chapterContainer: {
         paddingLeft: 15,
         paddingRight: 15,
-        marginBottom: 30
+        marginBottom: 30,
     },
     chapterInner: {
         flexDirection: 'row',
@@ -53,7 +62,7 @@ const Styles = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
         elevation: 6,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
     },
 
     chapterNameWrap: {

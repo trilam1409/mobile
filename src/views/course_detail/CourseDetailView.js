@@ -1,13 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {FlatList, SafeAreaView, StyleSheet, View, Dimensions, ActivityIndicator} from 'react-native';
-import {Text} from 'react-native-elements';
+import {
+    SafeAreaView,
+    View,
+    Text,
+    ScrollView,
+    StyleSheet,
+    Dimensions,
+    FlatList,
+    TouchableWithoutFeedback,
+} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import HTML from 'react-native-render-html';
 
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-controls';
 
 import VideoChapterList from './VideoChapterList';
+import {Icon} from 'react-native-elements';
 
 const CourseDetailView = (props) => {
 
@@ -15,6 +25,8 @@ const CourseDetailView = (props) => {
 
     const {chapter} = videoList;
 
+    const [fullscreen, setFullscreen] = useState(0);
+    
     return (
         <View style={{flex: 1, alignSelf: 'stretch'}}>
 
@@ -27,16 +39,29 @@ const CourseDetailView = (props) => {
             </LinearGradient>
 
             <SafeAreaView style={{flex: 1}}>
-                <View style={Styles.wrapVideo}>
+                <View style={[Styles.wrapVideo, fullscreen && Styles.fullScreen]}>
 
-                    <Video key={videoToPlay.id}
-                           source={{uri: videoToPlay.video_url}}
-                           style={Styles.backgroundVideo}
-                           autoplay={true}
-                           controls={true}
-                           disableFocus={true}
-                           resizeMode="cover"
-                    />
+                    {!videoToPlay.type ?
+                        <Video key={videoToPlay.id}
+                               source={{uri: videoToPlay.content}}
+                               style={Styles.backgroundVideo}
+                               autoplay={true}
+                               controls={true}
+                               disableFocus={true}
+                               resizeMode="contain"
+                        /> : <View>
+                            <ScrollView style={Styles.readingView}>
+                                <HTML containerStyle={{paddingTop: 20, paddingBottom: 40}} html={videoToPlay.content}
+                                      imagesMaxWidth={Dimensions.get('window').width}/>
+                            </ScrollView>
+                            <View style={Styles.readingExpand}>
+                                <TouchableWithoutFeedback onPress={() => setFullscreen(!fullscreen)}>
+                                    <Icon name={'expand'} type={'font-awesome'} color={'#fff'}/>
+                                </TouchableWithoutFeedback>
+                            </View>
+                        </View>
+                    }
+
 
                 </View>
 
@@ -64,9 +89,10 @@ const Styles = StyleSheet.create({
     },
 
     wrapVideo: {
+        position: 'relative',
         marginBottom: 30,
-        minWidth: Dimensions.get('window').width,
-        minHeight: Dimensions.get('window').width * (9 / 16),
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').width * (9 / 16),
     },
 
     backgroundVideo: {
@@ -75,6 +101,29 @@ const Styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
+    },
+
+    readingView: {
+        backgroundColor: '#fff',
+        paddingLeft: 16,
+        paddingRight: 16,
+    },
+
+    readingExpand: {
+        position: 'absolute',
+        right: 16,
+        bottom: 5,
+        backgroundColor: 'rgba(0,0,0,.5)',
+        padding: 4,
+        borderRadius: 4,
+    },
+
+    fullScreen: {
+        position: 'absolute',
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+        marginBottom: 0,
+        zIndex: 10,
     },
 });
 
