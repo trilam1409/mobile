@@ -10,7 +10,7 @@ exports.getCourseVideoList = function(courseId = null) {
 
         RestClient
             .getInstance()
-            .request(RequestUtil.GET_REQUEST, EndpointUtil.COURSE_DETAIL, {id: courseId}, true)
+            .request(RequestUtil.GET_REQUEST, EndpointUtil.COURSE_DETAIL, {invite_id: courseId}, true)
             .then(responseData => {
                 if(responseData.status.code != 200) {
                     return reject('Fail in getting course detail');

@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import MasterView from '../views/Master';
 import ProfileView from '../views/profile/ProfileView';
 import * as LogoutAction from '../actions/Logout';
-import {Alert} from "react-native";
+import {removeFromCache, getFromCache} from '../services/Cache';
+import * as CredentialsUtil from '../utils/Credentials';
 
 class Profile extends Component {
 
@@ -17,22 +18,20 @@ class Profile extends Component {
 
     _onMenuItemPress = (content, title) => {
         this.props.navigation.navigate('StaticScreen', {content: content, title: title});
-    }
+    };
 
-    _logout = () => {
-        this.props.logoutAccount().then(() => {
-            this.props.navigation.navigate('Login');
-        }).catch((e) => {
-            Alert.alert('Fail', JSON.stringify(e));
-        })
-    }
+    _logout = async () => {
+        await removeFromCache(CredentialsUtil.ACCESS_TOKEN_CACHE_KEY).then(() =>
+            this.props.navigation.navigate('Login')
+        );
+    };
 
     render() {
         return <MasterView content={<ProfileView navigate={this.props.navigation.navigate}
-                           onLogoutPress={this._logout}
-                           onMenuItemPress={this._onMenuItemPress}
-                                                            userData={this.props.login_data}
-                           />} />;
+                                                 onLogoutPress={this._logout}
+                                                 onMenuItemPress={this._onMenuItemPress}
+                                                 myProfile={this.props.my_profile}
+        />}/>;
     }
 }
 
@@ -41,7 +40,7 @@ class Profile extends Component {
 // This function makes Redux know that this component needs to be passed a piece of the state
 function mapStateToProps(state, props) {
     return {
-        login_data: state.loginReducer.login_data
+        my_profile: state.myCoursesReducer.my_profile,
     };
 }
 

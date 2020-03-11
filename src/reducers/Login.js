@@ -1,6 +1,6 @@
 import { LOGIN_ACCOUNT } from '../utils/Constants';
 
-const initialState = { login_data: {} };
+const initialState = { login_data: {}};
 
 export default function loginReducer(state = initialState, action) {
     switch (action.type) {

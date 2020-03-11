@@ -5,7 +5,7 @@ import MyCoursesCardList from './MyCoursesCardList';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const MyCoursesView = (props) => {
-    const {listCourses, onCardPress, quote} = props;
+    const {listCourses, onCardPress, quote, myProfile} = props;
 
     return (
         <View style={{flex: 1}}>
@@ -13,7 +13,7 @@ const MyCoursesView = (props) => {
             <ImageBackground style={Styles.imageHeader} source={{uri: quote.img_url}}>
                 <SafeAreaView>
                     <View style={Styles.textHeader}>
-                        <Text style={Styles.textHi}>Chào ...,</Text>
+                        <Text style={Styles.textHi}>Chào {myProfile.full_name}</Text>
                         <Text style={Styles.textQuote}>{quote.quote}</Text>
                         <Text style={Styles.textAuthor}>{quote.author}</Text>
                     </View>

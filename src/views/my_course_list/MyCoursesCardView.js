@@ -4,31 +4,32 @@ import {Card, Avatar} from 'react-native-elements';
 import {Bar} from 'react-native-progress';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Ripple from 'react-native-material-ripple';
+import {API_DOMAIN_URL} from '../../utils/Endpoint';
 
 export default function MyCoursesCardView(props) {
     const {item, onCardPress} = props;
 
-    const {image_url, name, author, process, start_date, expired_day} = item;
+    const {image_url, name, author, progress, start_date, day_qty} = item;
 
     const ProgressBar = (props) => {
-        const {process} = props;
+        const {progress} = props;
 
-        if (process == 0) {
+        if (progress == 0) {
             return (
                 <View style={Styles.progressBar}>
-                    <Text style={[Styles.textProgressBar, {color: '#808080'}]}>Hoàn thành {process * 100}%</Text>
-                    <Bar progress={process} width={null} borderWidth={0} color={'#808080'}
+                    <Text style={[Styles.textProgressBar, {color: '#808080'}]}>Hoàn thành {progress}%</Text>
+                    <Bar progress={progress/100} width={null} borderWidth={0} color={'#808080'}
                          unfilledColor={'#808080'}/>
                 </View>
 
             );
         }
 
-        if (process >= .8) {
+        if (progress == 100) {
             return (
                 <View style={Styles.progressBar}>
-                    <Text style={[Styles.textProgressBar, {color: '#7ed321'}]}>Hoàn thành {process * 100}%</Text>
-                    <Bar progress={process} width={null} borderWidth={0} color={'#7ed321'}
+                    <Text style={[Styles.textProgressBar, {color: '#7ed321'}]}>Hoàn thành {progress}%</Text>
+                    <Bar progress={progress/100} width={null} borderWidth={0} color={'#7ed321'}
                          unfilledColor={'#d8f1bc'} />
                 </View>
             );
@@ -37,8 +38,8 @@ export default function MyCoursesCardView(props) {
 
         return (
             <View style={Styles.progressBar}>
-                <Text style={[Styles.textProgressBar, {color: '#e6c60d'}]}>Hoàn thành {process * 100}%</Text>
-                <Bar progress={process} width={null} borderWidth={0} color={'#e6c60d'}
+                <Text style={[Styles.textProgressBar, {color: '#e6c60d'}]}>Hoàn thành {progress}%</Text>
+                <Bar progress={progress/100} width={null} borderWidth={0} color={'#e6c60d'}
                      unfilledColor={'#f7f1a6'}/>
             </View>
         );
@@ -47,19 +48,19 @@ export default function MyCoursesCardView(props) {
 
     return (
 
-        <Ripple rippleColor={'#fff'} onPress={() => onCardPress(item)} disabled={!expired_day && true}>
+        <Ripple rippleColor={'#fff'} onPress={() => onCardPress(item)} disabled={!day_qty && true}>
             <View style={Styles.containerCard}>
 
                 {
-                    !expired_day && <View style={Styles.containerCardExpired}></View>
+                    !day_qty && <View style={Styles.containerCardExpired}></View>
                 }
 
                 <View style={Styles.wrapTime}>
                     <Text style={Styles.startDate}>Mời học {start_date}</Text>
 
                     {
-                        !expired_day ? <Text style={[Styles.expiredDay, {color: '#808080'}]}> • Hết hạn</Text>
-                            : <Text style={[Styles.expiredDay, {color: '#00b9f2'}]}> • Còn {expired_day} ngày sử
+                        !day_qty ? <Text style={[Styles.expiredDay, {color: '#808080'}]}> • Hết hạn</Text>
+                            : <Text style={[Styles.expiredDay, {color: '#00b9f2'}]}> • Còn {day_qty} ngày sử
                                 dụng</Text>
                     }
 
@@ -67,9 +68,8 @@ export default function MyCoursesCardView(props) {
                 <View style={Styles.wrapContent}>
                     <View style={{flex: 2}}>
                         <Image
-                            resizeMode="cover"
                             style={Styles.imageCourse}
-                            source={{uri: image_url}}
+                            source={!image_url ? require('../../../assets/images/vnwlLogo.png') : {uri: API_DOMAIN_URL + 'media/' + image_url}}
                         />
                     </View>
                     <View style={{flex: 5, paddingLeft: 12, justifyContent: 'space-between'}}>
@@ -82,7 +82,7 @@ export default function MyCoursesCardView(props) {
                     </View>
                 </View>
 
-                <ProgressBar process={process}/>
+                <ProgressBar progress={(progress)}/>
             </View>
         </Ripple>
 
@@ -148,12 +148,9 @@ const Styles = StyleSheet.create({
     },
 
     imageCourse: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
+        width: '100%',
         borderRadius: 4,
+        resizeMode: 'contain'
     },
     nameCourse: {
         fontWeight: '500',

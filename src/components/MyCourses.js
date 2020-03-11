@@ -5,7 +5,7 @@ import MasterView from '../views/Master';
 import * as LoadingAction from '../actions/Loading';
 import * as MyCoursesAction from '../actions/MyCourses';
 import MyCoursesView from '../views/my_course_list/MyCoursesView';
-import {ActivityIndicator} from 'react-native';
+import Loading from './Loading';
 
 class MyCourses extends Component {
 
@@ -16,7 +16,9 @@ class MyCourses extends Component {
     async componentDidMount(): void {
         this.props.showLoading(true);
 
-        await this.props.getQuote();
+        this.props.getQuote();
+
+        await this.props.getProfileAction();
 
         await this.props.getMyCoursesList().then(result => {
             this.props.showLoading(false);
@@ -31,9 +33,14 @@ class MyCourses extends Component {
 
     render() {
 
+        if (this.props.loading) {
+            return <Loading/>;
+        }
+
         return <MasterView content={<MyCoursesView listCourses={this.props.my_courses_list}
                                                    onCardPress={this.onCardPress.bind(this)}
-                                                   quote={this.props.quote}/>}/>;
+                                                   quote={this.props.quote} myProfile={this.props.my_profile}/>}
+                                                     />;
     }
 }
 
@@ -45,6 +52,7 @@ function mapStateToProps(state, props) {
         loading: state.loadingReducer.loading,
         my_courses_list: state.myCoursesReducer.my_courses_list,
         quote: state.myCoursesReducer.quote,
+        my_profile: state.myCoursesReducer.my_profile
     };
 }
 

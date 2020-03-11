@@ -5,7 +5,7 @@ const VideoItem = (props) => {
 
     const {item, onPressVideo, videoToPlay} = props;
 
-    const {id, watched} = item.item;
+    const {id, status} = item.item;
 
     const [playing, setPlaying] = useState(0);
 
@@ -25,8 +25,8 @@ const VideoItem = (props) => {
         }}>
             <Text
                 style={[Styles.lessonItem,
-                    watched == 'progress' && Styles.lessonItemInProgress,
-                    watched == 'done' && Styles.lessonItemInDone,
+                    status == 'in-progress' && Styles.lessonItemInProgress,
+                    status == 'done' && Styles.lessonItemInDone,
                     playing && Styles.lessonItemPlaying]}>{item.index + 1}</Text>
         </TouchableOpacity>
     );

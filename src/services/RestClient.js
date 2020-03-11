@@ -9,9 +9,7 @@ export default class RestClient {
 
     constructor() {
         this.baseurl = EndpointUtil.API_DOMAIN_URL;
-        this.header = {
-            'x-access-token': ''
-        };
+        this.header = {};
     }
 
     static getInstance() {
@@ -23,7 +21,16 @@ export default class RestClient {
         return this;
     }
 
-    request(method = RequestUtil.GET_REQUEST, endpoint = null, requestParams = {}, needAuth = false) {
+    request(method = RequestUtil.GET_REQUEST, endpoint = null, requestParams = {}, needAuth = false, needSecret = false) {
+
+        if (needSecret) {
+            requestParams = Object.assign(requestParams, {
+                'grant_type': 'password',
+                'client_id': CredentialsUtil.CLIENT_ID,
+                'client_secret': CredentialsUtil.CLIENT_SECRET,
+            });
+        }
+
         return new Promise((resolve, reject) => {
             let url = this.baseurl + endpoint;
             switch (method) {
@@ -56,7 +63,8 @@ export default class RestClient {
             }
 
             CacheService.getFromCache(CredentialsUtil.ACCESS_TOKEN_CACHE_KEY).then(credentials => {
-                this.addHeader({'x-access-token' : credentials});
+
+                this.addHeader({'Authorization' : 'Bearer ' + credentials});
 
                 fetch(url, {
                     method: method,

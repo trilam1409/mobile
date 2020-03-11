@@ -1,6 +1,6 @@
 import React from 'react';
 import {Styles as MasterStyles} from '../styles/Master.styles';
-import {View, ImageBackground, Text, SafeAreaView, StatusBar, TouchableHighlight} from 'react-native';
+import {View, Platform, Text, SafeAreaView, StatusBar, TouchableHighlight} from 'react-native';
 import {Icon} from 'react-native-elements';
 import LinearGradientWrap from './LinearGradientUtils';
 
@@ -10,7 +10,7 @@ export default function MasterView(props) {
 
     return (
         <View style={MasterStyles.container}>
-            <StatusBar backgroundColor="blue" barStyle="light-content"/>
+            <StatusBar backgroundColor="white"  barStyle={ Platform.OS == 'ios' ? "light-content" : "dark-content"}/>
             {
                 haveBackButton &&
                 <View style={{

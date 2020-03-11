@@ -54,10 +54,10 @@ const LoginView = (props) => {
                     </Animated.View>
 
                     <Formik
-                        initialValues={{email: '', password: ''}}
+                        initialValues={{username: '', password: ''}}
                         validationSchema={
                             yup.object().shape({
-                                email: yup
+                                username: yup
                                     .string()
                                     .email('Vui lòng nhập đúng định dạng email')
                                     .required('Vui lòng nhập email'),
@@ -67,22 +67,25 @@ const LoginView = (props) => {
                             })}
                         onSubmit={(values) => onSubmit(values)}
                     >
-                        {({handleChange, handleBlur, handleSubmit, values, errors, isSubmitting}) => (
+                        {({handleChange, handleBlur, handleSubmit, values, errors, isSubmitting, setFieldTouched, touched}) => (
                             <View style={loginStyles.wrapForm}>
 
 
-                                <FieldInputPipe onChangeText={handleChange('email')}
-                                                onBlur={handleBlur('email')}
-                                                value={values.email}
+                                <FieldInputPipe onChangeText={handleChange('username')}
+                                                onBlur={() => setFieldTouched('username')}
+                                                value={values.username}
                                                 placeholder={'Nhập email của bạn'}
-                                                errors={errors.email}/>
+                                                errors={errors.username}
+                                                touched={touched.username}
+                                />
 
                                 <FieldInputPipe onChangeText={handleChange('password')}
-                                                onBlur={handleBlur('password')}
+                                                onBlur={() => setFieldTouched('password')}
                                                 value={values.password}
                                                 secureTextEntry={true}
                                                 placeholder={'Nhập mật khẩu của bạn'}
-                                                errors={errors.password}/>
+                                                errors={errors.password}
+                                                touched={touched.password}/>
 
 
                                 <Button containerStyle={loginStyles.wrapButton} style={loginStyles.button}
