@@ -45,7 +45,6 @@ export default function MyCoursesCardView(props) {
         );
     };
 
-
     return (
 
         <Ripple rippleColor={'#fff'} onPress={() => onCardPress(item)} disabled={!day_qty && true}>
@@ -69,7 +68,7 @@ export default function MyCoursesCardView(props) {
                     <View style={{flex: 2}}>
                         <Image
                             style={Styles.imageCourse}
-                            source={!image_url ? require('../../../assets/images/vnwlLogo.png') : {uri: API_DOMAIN_URL + 'media/' + image_url}}
+                            source={{uri: API_DOMAIN_URL + 'media/' + image_url}}
                         />
                     </View>
                     <View style={{flex: 5, paddingLeft: 12, justifyContent: 'space-between'}}>
@@ -148,7 +147,11 @@ const Styles = StyleSheet.create({
     },
 
     imageCourse: {
-        width: '100%',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
         borderRadius: 4,
         resizeMode: 'contain'
     },

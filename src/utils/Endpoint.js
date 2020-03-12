@@ -36,6 +36,6 @@ export const PROFILE = 'api/v1/employee/profile';
 
 export const QUOTE = 'quote';
 
-export const API_DOMAIN_URL = 'https://dev-vlb.vietnamworks.com/app_dev.php/';
+export const API_DOMAIN_URL = 'http://staging-vlb.vietnamworks.com/';
 
 
