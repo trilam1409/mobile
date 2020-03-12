@@ -48,6 +48,7 @@ export default class RestClient {
             }
 
             if (!needAuth) {
+                this.addHeader({"Content-Type": "application/x-www-form-urlencoded"})
                 fetch(url, {
                     method: method,
                     headers: this.header,

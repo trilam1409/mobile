@@ -10,11 +10,9 @@ import {
     FlatList,
     TouchableWithoutFeedback,
 } from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import HTML from 'react-native-render-html';
 
 import Video from 'react-native-video';
-import VideoPlayer from 'react-native-video-controls';
 
 import VideoChapterList from './VideoChapterList';
 import {Icon} from 'react-native-elements';
@@ -26,7 +24,7 @@ const CourseDetailView = (props) => {
     const {chapter} = videoList;
 
     const [fullscreen, setFullscreen] = useState(0);
-    
+
     return (
         <View style={{flex: 1, alignSelf: 'stretch'}}>
 
@@ -52,7 +50,7 @@ const CourseDetailView = (props) => {
                         /> : <View>
                             <ScrollView style={Styles.readingView}>
                                 <HTML containerStyle={{paddingTop: 20, paddingBottom: 40}} html={videoToPlay.content}
-                                      imagesMaxWidth={Dimensions.get('window').width}/>
+                                      imagesMaxWidth={Dimensions.get('window').width} ignoredTags={['scripts', 'table']}/>
                             </ScrollView>
                             <View style={Styles.readingExpand}>
                                 <TouchableWithoutFeedback onPress={() => setFullscreen(!fullscreen)}>
