@@ -10,24 +10,28 @@ export default function MasterView(props) {
 
     return (
         <View style={MasterStyles.container}>
-            <StatusBar backgroundColor="white"  barStyle={ Platform.OS == 'ios' ? "light-content" : "dark-content"}/>
+            <StatusBar backgroundColor="white" barStyle={Platform.OS == 'ios' ? 'light-content' : 'dark-content'}/>
             {
                 haveBackButton &&
-                <View style={{
-                    position: 'absolute',
-                    top: '5%',
-                    left: '5%',
-                    zIndex: 100,
-                }}>
-                    <TouchableHighlight activeOpacity={0} underlayColor={'transparent'} onPress={() => {
-                        navigation.goBack();
-                    }}
-                    >
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
-                            <Icon name={'chevron-left'} color={'white'} size={24}/>
-                        </View>
-                    </TouchableHighlight>
-                </View>
+
+                    <View style={{
+                        position: 'absolute',
+                        top: 10,
+                        left: 10,
+                        zIndex: 100,
+                    }}>
+                        <SafeAreaView>
+                        <TouchableHighlight activeOpacity={0} underlayColor={'transparent'} onPress={() => {
+                            navigation.goBack();
+                        }}
+                        >
+                            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+                                <Icon name={'chevron-left'} color={'white'} size={24}/>
+                            </View>
+                        </TouchableHighlight>
+                        </SafeAreaView>
+                    </View>
+
             }
             {
                 haveHeader &&

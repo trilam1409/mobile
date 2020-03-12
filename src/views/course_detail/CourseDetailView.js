@@ -9,6 +9,7 @@ import {
     Dimensions,
     FlatList,
     TouchableWithoutFeedback,
+    NativeModules
 } from 'react-native';
 import HTML from 'react-native-render-html';
 
@@ -31,7 +32,7 @@ const CourseDetailView = (props) => {
             <LinearGradient start={{x: 0, y: 0}} end={{x: 1.2, y: 0}}
                             colors={['#444973', '#4C6785', '#5E7367']}>
                 <SafeAreaView>
-                    <Text style={Styles.courseName}>{videoList.course_name}</Text>
+                    <Text numberOfLines={1} ellipsizeMode={'tail'} style={Styles.courseName}>{videoList.course_name}</Text>
                 </SafeAreaView>
 
             </LinearGradient>
@@ -73,6 +74,16 @@ const CourseDetailView = (props) => {
         </View>
     );
 };
+
+
+let statusBar = 0;
+if (Platform.OS === 'ios') {
+    NativeModules.StatusBarManager.getHeight((statusBarHeight)=>{
+        statusBar = statusBarHeight.height
+    })
+} else {
+    statusBar= NativeModules.StatusBarManager.HEIGHT;
+}
 
 const Styles = StyleSheet.create({
     courseName: {
@@ -119,7 +130,7 @@ const Styles = StyleSheet.create({
     fullScreen: {
         position: 'absolute',
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height - 120 - statusBar,
         marginBottom: 0,
         zIndex: 10,
     },
